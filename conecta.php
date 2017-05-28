@@ -1,6 +1,6 @@
 ﻿<?php
     @define(HOST, "localhost");
-    @define(DB, "testeestatistica");
+    @define(DB, "testeBanco");
     @define(USER,"root");
     @define(PASS,"");
     

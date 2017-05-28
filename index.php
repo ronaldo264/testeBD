@@ -67,7 +67,7 @@
             $inicioMySQL = teste();
            
             while ($paraMySQL < 100) {
-                $sqlMySQL = "INSERT INTO tabelateste(nome,numero) VALUES(:nome,:numero)";
+                $sqlMySQL = "INSERT INTO tabela(nome,numero) VALUES(:nome,:numero)";
                 try {
                     $insere = $con->prepare($sqlMySQL);
                     $insere->bindValue(':nome', $nome, PDO::PARAM_STR);
@@ -105,7 +105,7 @@
         echo '<strong>A Média do MySQL é de :  </strong>' . $mediaMySQL;
         $tamanhoMySQL = $mediaMySQL * 100;
         /////////////////////////////SELECT MySQL/////////////////////////////////
-        $sqlMySQL = "Select * FROM tabelateste WHERE id <= 1000";               //
+        $sqlMySQL = "Select * FROM tabela WHERE id <= 1000";               //
         $inicioSelMysql = teste();                                              //
         try {                                                                   //
             $select = $con->prepare($sqlMySQL);                                 //
@@ -132,7 +132,7 @@
           fim do teste com MySQL e início do teste com Postgre
          *******************************************************************************************####********************************************************************** */
 
-        $conex = "host = 'localhost' port = '5432' dbname = 'estatistica' user = 'postgres' password = '180997'";
+        $conex = "host = 'localhost' port = '5432' dbname = 'testeBanco' user = 'postgres' password = '180997'";
         $con_poslt = pg_connect($conex)or die("Erro de Conexão" . pg_last_error());
         $startPolst = 0;
         $somaPolst = 0;
