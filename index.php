@@ -42,7 +42,7 @@
     $tempoSelFir = number_format(($fimSelFir - $inicioSelFir), 8);              //
     echo "Mostra" . $tempoSelFir;                                               //
     $mediaSelFir = $tempoSelFir / 10;                                           //
-    $tamanhoselFir = $mediaSelFir * 100;                                        //
+    $tamanhoselFir = $mediaSelFir * 1000;                                       //
     echo '<br/>';                                                               //
     echo'O select é :' . $tempoSelFir . '<br/>';                                //
     echo $mediaSelFir;                                                          //
@@ -105,7 +105,7 @@
         echo '<strong>A Média do MySQL é de :  </strong>' . $mediaMySQL;
         $tamanhoMySQL = $mediaMySQL * 100;
         /////////////////////////////SELECT MySQL/////////////////////////////////
-        $sqlMySQL = "Select * FROM tabela WHERE id <= 1000";               //
+        $sqlMySQL = "Select * FROM tabela WHERE id <= 1000";                    //
         $inicioSelMysql = teste();                                              //
         try {                                                                   //
             $select = $con->prepare($sqlMySQL);                                 //
@@ -119,14 +119,15 @@
         }                                                                       //
         $tempSelMysql = number_format(($fimSelMysql - $inicioSelMysql), 8);     //
         $mediaSelMysql = $tempSelMysql / 10;                                    //
-        $tamanhoselMysql = $tempSelMysql * 100;                                 //
+        $tamanhoselMysql = $tempSelMysql * 1000;                                 //
         echo '<br/>';                                                           //
         echo'O select é :' . $tempSelMysql . '<br/>';                           //
         echo $mediaSelMysql;                                                    //
-        echo'</div>';                                                           //
-        echo '<div style="width:300px; float:left; border:1px solid #ccc; '     //
-        . 'padding:5px;"> <h2> Teste PostgreSQL</h2>';                            //
-        //////////////////////////////////////////////////////////////////////////
+        echo'</div>'; 															//
+		//////////////////////////////////////////////////////////////////////////
+        echo '<div style="width:300px; float:left; border:1px solid #ccc; '     
+        . 'padding:5px;"> <h2> Teste PostgreSQL</h2>';                           
+        
         
         /*******************************************************************************************####***********************************************************************
           fim do teste com MySQL e início do teste com Postgre
@@ -169,6 +170,8 @@
             $fimSelPost = teste();
         }
         $tempoSelPost = number_format(($fimSelPost - $inicioSelPost), 4);
+		$mediaSelPost = number_format($tempoSelPost/10);
+		$tamanhoSelPost = $tempoSelPost * 1000;
         echo 'Tempo do Select no Postgre é de: '.$tempoSelPost.'<br/>';
         ///////////////////////////////////////////////////////////////////////////////////////////////////////
         $inicioDelPost = teste();
@@ -204,7 +207,7 @@
             </div>
             <span> MySQL <?php echo $tamanhoselMysql; ?>% </span> <div style="width:<?php echo $tamanhoselMysql; ?>%; height:20px; background:green; margin-right:10px;margin-bottom:10px;" >
             </div>
-            <span> PostgreSQL <?php echo $tamanhoPolst; ?>% </span> <div style="width:<?php echo $tamanhoPolst; ?>%; height:20px; background:blue; margin-right:10px;margin-botton:10px;" >
+            <span> PostgreSQL <?php echo $tempoSelPost; ?>% </span> <div style="width:<?php echo $tamanhoSelPost; ?>%; height:20px; background:blue; margin-right:10px;margin-botton:10px;" >
             </div>
         </div>
     </div>
