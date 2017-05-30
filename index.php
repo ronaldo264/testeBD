@@ -36,16 +36,27 @@
     $inicioSelFir = teste();                                                    //
     $sqlSelFir = "Select * from tabela2 Where id <= 1000";                      //
     $resul = ibase_query($conexao, $sqlSelFir);                                 //
-    if ($resul) {                                                               //
+                                                                  //
         $fimSelFir = teste();                                                   //
-    }                                                                           //
-    $tempoSelFir = number_format(($fimSelFir - $inicioSelFir), 8);              //
-    echo "Mostra" . $tempoSelFir;                                               //
+                                                                               //
+    $tempoSelFir = number_format(($fimSelFir - $inicioSelFir), 8);              //                                              //
     $mediaSelFir = $tempoSelFir / 10;                                           //
-    $tamanhoselFir = $mediaSelFir * 1000;                                       //
+    $tamanhoselFir = number_format(($tempoSelFir * 1000),2);                                       //
     echo '<br/>';                                                               //
-    echo'O select é :' . $tempoSelFir . '<br/>';                                //
-    echo $mediaSelFir;                                                          //
+    echo'O select é :' . $tempoSelFir . '<br/>';                                //                                                         //
+    ibase_close($conexao);                                                      //
+    //////////////////////////////////////////////////////////////////////////////
+	//////////////////SELECT FIREBIRD/////////////////////////////////////////////
+    $inicioUpFir = teste();                                                    //
+    $sqlUpFir = "UPDATE  tabela2 SETE nome = Pedro Malazarte, numero = 9875675645344324 Where id <= 1000";                      //
+    $resulUp = ibase_query($conexao, $sqlSelFir);                                 //
+    if ($resulUp) {                                                               //
+        $fimUpFir = teste();                                                   //
+    }                                                                           //
+    $tempoUpFir = number_format(($fimUpFir - $inicioUpFir), 4);              //                                              //                                         //
+    $tamanhoUpFir = number_format(($tempoUpFir * 1000),2);                                       //
+    echo '<br/>';                                                               //
+    echo'O Update é :' . $tempoUpFir . '<br/>';                                //                                                         //
     ibase_close($conexao);                                                      //
     echo '</div>';                                                              //
         echo '<div style="width:300px; float:left; border:1px solid #ccc; '     //      
@@ -103,7 +114,7 @@
         echo "Tempo Total para Inserção é de: <strong>" . $somaMySQL . "</strong> <br/>";
         $mediaMySQL = $somaMySQL / $startMySQL;
         echo '<strong>A Média do MySQL é de :  </strong>' . $mediaMySQL;
-        $tamanhoMySQL = $mediaMySQL * 100;
+        $tamanhoMySQL = number_format(($mediaMySQL * 100),2);
         /////////////////////////////SELECT MySQL/////////////////////////////////
         $sqlMySQL = "Select * FROM tabela WHERE id <= 1000";                    //
         $inicioSelMysql = teste();                                              //
@@ -119,10 +130,31 @@
         }                                                                       //
         $tempSelMysql = number_format(($fimSelMysql - $inicioSelMysql), 8);     //
         $mediaSelMysql = $tempSelMysql / 10;                                    //
-        $tamanhoselMysql = $tempSelMysql * 1000;                                 //
+        $tamanhoselMysql = number_format(($tempSelMysql * 1000),2);            	//
         echo '<br/>';                                                           //
         echo'O select é :' . $tempSelMysql . '<br/>';                           //
         echo $mediaSelMysql;                                                    //
+		//////////////////////////////////////////////////////////////////////////
+		
+		/////////////////////////////update MySQL/////////////////////////////////
+		$name = "Pedro Malazarte";
+		$number = "9875675645344324";
+        $inicioUpMysql = teste();                                              	//
+        try {                                                                   //
+            $up=$con->prepare("UPDATE tabela SET nome=:name, numero =:number"); //
+            $up->bindValue(":name", $name);     								//
+			$up->bindValue(":number", $number);
+			if($up->execute()){
+                $fimUpMySQL = teste();  
+			}																	//
+																				//
+        } catch (Exception $ex) {                                               //
+                                                                                //
+        }                                                                       //
+        $tempoUpMysql = number_format(($fimUpMySQL - $inicioUpMysql), 4);     	//                                   	//
+        $tamanhoUpMySQL = number_format(($tempoUpMysql * 100),2);             	//
+        echo '<br/>';                                                           //
+        echo'O Update é :' . $tempoUpMysql . '<br/>';                           //
         echo'</div>'; 															//
 		//////////////////////////////////////////////////////////////////////////
         echo '<div style="width:300px; float:left; border:1px solid #ccc; '     
@@ -162,7 +194,7 @@
         $mediaPolst = $somaPolst / $startPolst;
         echo'<strong> A Média do Postgre é de: </strong>' . $mediaPolst.'<br/>';
         $tamanhoPolst = $mediaPolst * 100;
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////**SELECT Postgre**//////////////////////////////////////////////////
         $inicioSelPost = teste();
         $sqlSelPost = "SELECT * FROM tabela WHERE id <= 1000";
         $resulSelPost = pg_query($con_poslt, $sqlSelPost)or die("Erro ao Selecionar dados " . pg_last_error());
@@ -171,9 +203,21 @@
         }
         $tempoSelPost = number_format(($fimSelPost - $inicioSelPost), 4);
 		$mediaSelPost = number_format($tempoSelPost/10);
-		$tamanhoSelPost = $tempoSelPost * 1000;
+		$tamanhoSelPost = number_format(($tempoSelPost * 1000),2);
         echo 'Tempo do Select no Postgre é de: '.$tempoSelPost.'<br/>';
         ///////////////////////////////////////////////////////////////////////////////////////////////////////
+												/**UPDATE Postgre**/
+		///////////////////////////////////////////////////////////////////////////////////////////////////////
+        $inicioUpPost = teste();
+        $sqlUpPost = "UPDATE tabela SET nome = Pedro Malazarte, numero = 9875675645344324 WHERE id <= 1000";
+        $resulUpPost = pg_query($con_poslt, $sqlSelPost)or die("Erro ao Selecionar dados " . pg_last_error());
+        if($resulUpPost){
+            $fimUpPost = teste();
+        }
+        $tempoUpPost = number_format(($fimUpPost - $inicioUpPost), 4);
+		$tamanhoUpPost = number_format(($tempoUpPost * 1000),2);
+        echo 'Tempo do Update no Postgre é de: '.$tempoUpPost.'<br/>';
+        //////////////////////////////////////////////**DELETE Postgre///////////////////////////////////////////
         $inicioDelPost = teste();
         $sqlDelete = "Delete From tabela";
         $resulDel = pg_query($con_poslt, $sqlDelete)or die("Erro ao Deletar dados " . pg_last_error());
@@ -201,13 +245,24 @@
         </div>
     </div>
     <div style="width:914px; margin: auto; padding:10px; border:1px solid #ccc;float: left;">
-        <p><strong> * O parametro utilizado para a comparação foi de 1(um) segundo para inserção de 100 linhas.</strong></p>
+        <p><strong> * O parametro utilizado para a comparação foi de 1(um) para a busca de 1000 linhas.</strong></p>
         <div style="padding:10px 10px 0 10px;position: relative">
             <span> Firbird <?php echo $tamanhoselFir; ?>% </span>   <div style="width:<?php echo $tamanhoselFir; ?>%; height:20px; background:red; margin-right:10px;margin-bottom:10px;" >
             </div>
             <span> MySQL <?php echo $tamanhoselMysql; ?>% </span> <div style="width:<?php echo $tamanhoselMysql; ?>%; height:20px; background:green; margin-right:10px;margin-bottom:10px;" >
             </div>
-            <span> PostgreSQL <?php echo $tempoSelPost; ?>% </span> <div style="width:<?php echo $tamanhoSelPost; ?>%; height:20px; background:blue; margin-right:10px;margin-botton:10px;" >
+            <span> PostgreSQL <?php echo $tamanhoSelPost; ?>% </span> <div style="width:<?php echo $tamanhoSelPost; ?>%; height:20px; background:blue; margin-right:10px;margin-botton:10px;" >
+            </div>
+        </div>
+    </div>
+	<div style="width:914px; margin: auto; padding:10px; border:1px solid #ccc;float: left;">
+        <p><strong> * O parametro utilizado para a comparação foi de 1(um)segundo para a atualização de 1000 linhas.</strong></p>
+        <div style="padding:10px 10px 0 10px;position: relative">
+            <span> Firbird <?php echo $tamanhoUpFir; ?>% </span>   <div style="width:<?php echo $tamanhoUpFir; ?>%; height:20px; background:red; margin-right:10px;margin-bottom:10px;" >
+            </div>
+            <span> MySQL <?php echo $tamanhoUpMySQL; ?>% </span> <div style="width:<?php echo $tamanhoUpMySQL; ?>%; height:20px; background:green; margin-right:10px;margin-bottom:10px;" >
+            </div>
+            <span> PostgreSQL <?php echo $tamanhoUpPost; ?>% </span> <div style="width:<?php echo $tamanhoUpPost; ?>%; height:20px; background:blue; margin-right:10px;margin-botton:10px;" >
             </div>
         </div>
     </div>
