@@ -2,7 +2,6 @@
 	require_once 'gerador.php';
 	require_once 'conecta.php';
 	$iniciar = 0;
-	$ini = 1;
 	while($iniciar < 100){
 		$nome = gerar();
 		$emp = rand(1,100);
