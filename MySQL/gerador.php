@@ -1,4 +1,8 @@
 <?php
+/*
+	http://codigofonte.uol.com.br/codigos/gerador-de-palavras-aleatorias-em-php
+	Publicado por: Everton da Rosa  26 de fevereiro de 2009
+*/
 function gerar(){
 	$vogais = array('a','e','i','o','u');
 	$consoantes = array('b','c','d','f','g','h','nh','lh','ch','j','k','l','m','n','p','qu','r','rr','s','ss','t','v','w','x','y','z',);
