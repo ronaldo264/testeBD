@@ -128,7 +128,25 @@ function nasc(){
 	$n10 = $e[rand(0,9)];
 	$n11 = $e[rand(0,9)];
 
-	$d = "$n1.$n2.$n3.$n4.'-'.$n5.$n6.'-'.$n7.$n8";
+	$d = "$n1.$n2.$n3.$n4-$n5.$n6-$n7.$n8";
+	
+	return $d;
+}
+function cpf(){
+	$e = [0,1,2,3,4,5,6,7,8,9];
+	$n1 =  $e[rand(1,9)];
+	$n2 =  $e[rand(0,9)];
+	$n3 =  $e[rand(0,9)];
+	$n4 =  $e[rand(0,9)];
+	$n5 =  $e[rand(0,9)];
+	$n6 =  $e[rand(0,9)];
+	$n7 =  $e[rand(0,9)];
+	$n8 =  $e[rand(0,9)];
+	$n9 =  $e[rand(0,9)];
+	$n10 = $e[rand(0,9)];
+	$n11 = $e[rand(0,9)];
+
+	$d = "$n1$n2$n3.$n4$n5$n6.$n7$n8$n9-$10$n11";
 	
 	return $d;
 }

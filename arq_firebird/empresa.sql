@@ -1,0 +1,22 @@
+INSERT INTO EMPRESA (ID_EMP, ID_END_EMP, ID_TRAB_EMP, NOME_EMP)
+             VALUES (1, 90, 74, 'ruzadecukocudechulhi');
+INSERT INTO EMPRESA (ID_EMP, ID_END_EMP, ID_TRAB_EMP, NOME_EMP)
+             VALUES (2, 75, 79, 'vibiva');
+INSERT INTO EMPRESA (ID_EMP, ID_END_EMP, ID_TRAB_EMP, NOME_EMP)
+             VALUES (3, 97, 97, 'ponavigo');
+INSERT INTO EMPRESA (ID_EMP, ID_END_EMP, ID_TRAB_EMP, NOME_EMP)
+             VALUES (4, 35, 68, 'messoropi');
+INSERT INTO EMPRESA (ID_EMP, ID_END_EMP, ID_TRAB_EMP, NOME_EMP)
+             VALUES (5, 19, 19, 'vogehifu');
+INSERT INTO EMPRESA (ID_EMP, ID_END_EMP, ID_TRAB_EMP, NOME_EMP)
+             VALUES (6, 23, 50, 'birocaxissexodulho');
+INSERT INTO EMPRESA (ID_EMP, ID_END_EMP, ID_TRAB_EMP, NOME_EMP)
+             VALUES (7, 74, 69, 'hekugossuxojituju');
+INSERT INTO EMPRESA (ID_EMP, ID_END_EMP, ID_TRAB_EMP, NOME_EMP)
+             VALUES (8, 12, 85, 'ssefuhilhe');
+INSERT INTO EMPRESA (ID_EMP, ID_END_EMP, ID_TRAB_EMP, NOME_EMP)
+             VALUES (9, 100, 51, 'quenuka');
+INSERT INTO EMPRESA (ID_EMP, ID_END_EMP, ID_TRAB_EMP, NOME_EMP)
+             VALUES (10, 50, 68, 'loquayu');
+
+COMMIT WORK;
