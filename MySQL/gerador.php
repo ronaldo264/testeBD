@@ -1,8 +1,4 @@
 <?php
-/*
-	http://codigofonte.uol.com.br/codigos/gerador-de-palavras-aleatorias-em-php
-	Publicado por: Everton da Rosa  26 de fevereiro de 2009
-*/
 function gerar(){
 	$vogais = array('a','e','i','o','u');
 	$consoantes = array('b','c','d','f','g','h','nh','lh','ch','j','k','l','m','n','p','qu','r','rr','s','ss','t','v','w','x','y','z',);
@@ -78,7 +74,7 @@ function cep(){
 	$n10 = $e[rand(0,9)];
 	$n11 = $e[rand(0,9)];
 
-	$d = $n1.$n2.'.'.$n3.$n4.$n5.'-'.$n6.$n7.$n8;
+	$d = "$n1$n2.$n3$n4.$n5-$n6$n7$n8";
 	
 	return $d;
 }
@@ -110,7 +106,7 @@ function pis(){
 	$n10 = $e[rand(0,9)];
 	$n11 = $e[rand(0,9)];
 
-	$d = $n1.$n2.$n3.''.$n4.$n5.$n6.''.$n7.$n8.$n9.''.$n10.$n11;
+	$d = "$n1$n2.$n3$n4$n5.$n6$n7$n8-$n9$n10";
 	
 	return $d;
 }
@@ -118,23 +114,20 @@ function nasc(){
 	$e = [0,1,2,3,4,5,6,7,8,9];
 	$n1 =  $e[rand(1,2)];
 	$n2 =  $e[rand(0,9)];
-	$n3 =  $e[rand(0,9)];
-	$n4 =  $e[rand(0,9)];
-	$n5 =  $e[rand(0,9)];
+	$n3 =  $e[rand(0,1)];
+	$n4 =  $e[rand(1,2)];
+	$n5 =  $e[rand(1,1)];
 	$n6 =  $e[rand(0,9)];
 	$n7 =  $e[rand(0,9)];
 	$n8 =  $e[rand(0,9)];
-	$n9 =  $e[rand(0,9)];
-	$n10 = $e[rand(0,9)];
-	$n11 = $e[rand(0,9)];
 
-	$d = "$n1.$n2.$n3.$n4-$n5.$n6-$n7.$n8";
+	$d = "$n1$n2/$n3$n4/$n5$n6$n7$n8";
 	
 	return $d;
 }
 function cpf(){
 	$e = [0,1,2,3,4,5,6,7,8,9];
-	$n1 =  $e[rand(1,9)];
+	$n1 =  $e[rand(0,9)];
 	$n2 =  $e[rand(0,9)];
 	$n3 =  $e[rand(0,9)];
 	$n4 =  $e[rand(0,9)];
@@ -146,7 +139,7 @@ function cpf(){
 	$n10 = $e[rand(0,9)];
 	$n11 = $e[rand(0,9)];
 
-	$d = "$n1$n2$n3.$n4$n5$n6.$n7$n8$n9-$10$n11";
+	$d = "$n1$n2$n3.$n4$n5$n6.$n7$n8$n9-$n10$n11";
 	
 	return $d;
 }
