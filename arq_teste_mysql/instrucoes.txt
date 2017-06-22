@@ -1,3 +1,0 @@
-1º - criar o banco testeBanco;
-2º - importar o arquivo tabelas.sql;
-3º - inserir dados na seguinte ordem: endereco, trabalho, empresa e pessoa;
